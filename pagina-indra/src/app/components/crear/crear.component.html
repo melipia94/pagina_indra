@@ -1,0 +1,44 @@
+<div class="container" *ngIf="noticia">
+	<h2>{{title}}</h2>
+
+	<div class="message success" *ngIf="status == 'success'">
+		La noticia se ha creado correctamente, 
+	</div>
+	<div class="message failed" *ngIf="status == 'failed'">
+		La noticia no se hapodido crear
+		
+	</div>
+	<form #noticiaForm="ngForm" (ngSubmit)="onSubmit(noticiaForm)">
+		<p>
+			<label for="titulo">Titulo</label>
+			<input type="text" name="titulo" #titulo="ngModel" [(ngModel)]="noticia.titulo" required >
+			<span class="form_error" *ngIf="titulo.touched && !titulo.valid">
+				El titulo es obligatorio
+			</span>
+		</p>
+		<p>
+			<label for="descripcion">Descripcion</label>
+			<textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="noticia.descripcion" required></textarea>
+			<span class="form_error" *ngIf="descripcion.touched && !descripcion.valid">
+				La descripcion es obligatorio
+			</span> 
+		</p>
+		<p>
+			<label for="fecha">Fecha</label>
+			<input type="text" name="fecha" #fecha="ngModel" [(ngModel)]="noticia.fecha" required>
+			<span class="form_error" *ngIf="fecha.touched && !fecha.valid">
+				La fecha es obligatorio
+			</span>
+		</p>
+		<p>
+			<label for="autor">Autor</label>
+			<input type="text" name="autor" #autor="ngModel" [(ngModel)]="noticia.autor" required >
+			<span class="form_error" *ngIf="autor.touched && !autor.valid">
+				El autor es obligatorio
+			</span>
+		</p>
+		<input type="submit" value="Enviar" [disabled]="!noticiaForm.form.valid">
+		
+	</form>
+</div>
+

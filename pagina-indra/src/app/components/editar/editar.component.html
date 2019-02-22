@@ -1,0 +1,22 @@
+<div class="container">
+	<h2>¿QUÉ NOTICIA QUIERE EDITAR O ELIMINAR?</h2>
+
+
+	<ul>
+		<li class="editar noticia">
+			<a [routerLink]="['/noticia']">
+				<p>NOTICIA DE PRUEBA</p>
+			</a>
+			
+		</li>
+
+		
+		<li *ngFor="let noticia of noticias" class="editar noticia">
+			<a [routerLink]="['/noticia', noticia._id]">
+				<p>{{noticia.titulo}}</p>
+			</a>
+
+
+		</li>
+	</ul>
+</div>
